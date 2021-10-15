@@ -59,6 +59,7 @@ stdenv.mkDerivation rec {
     docbook-xsl-nons
     docbook_xml_dtd_45
     python3 # for data-generators
+    python3.pkgs.pygobject3
     systemd # used for checks to install systemd user service
     dbus # used for checks and pkg-config to install dbus service/s
   ];
