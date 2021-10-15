@@ -1,6 +1,7 @@
 { stdenv
 , lib
 , fetchurl
+, fetchpatch
 , gettext
 , meson
 , ninja
@@ -8,6 +9,7 @@
 , asciidoc
 , gobject-introspection
 , python3
+, gtk-doc
 , docbook-xsl-nons
 , docbook_xml_dtd_45
 , libxml2
@@ -21,7 +23,6 @@
 , icu
 , libuuid
 , libsoup
-, libsoup_3
 , json-glib
 , systemd
 , dbus
@@ -30,13 +31,13 @@
 
 stdenv.mkDerivation rec {
   pname = "tracker";
-  version = "3.2.0";
+  version = "3.1.1";
 
   outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
-    sha256 = "sha256-8RelKHXUpNCceqmT+Mio0GRo1dz7FT642qUesThEUTo=";
+    sha256 = "sha256-Q3bi6YRUBm9E96JC5FuZs7/kwDtn+rGauw7Vhsp0iuc=";
   };
 
   patches = [
@@ -56,6 +57,7 @@ stdenv.mkDerivation rec {
     libxslt
     wrapGAppsNoGuiHook
     gobject-introspection
+    gtk-doc
     docbook-xsl-nons
     docbook_xml_dtd_45
     python3 # for data-generators
@@ -69,7 +71,6 @@ stdenv.mkDerivation rec {
     sqlite
     icu
     libsoup
-    libsoup_3
     libuuid
     json-glib
     libstemmer
